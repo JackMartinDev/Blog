@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const BlogPost = () => {
   return (
-    <div className="flex flex-col gap-2 font-light sm:flex-row cursor-pointer border-b last:border-0 p-4">
+    <div className="flex flex-col gap-2 font-light sm:flex-row cursor-pointer border-b last:border-0 p-4 dark:text-slate-50">
       <div className="flex shrink-0">
         <Image
           src="/thumbnail.jpg"

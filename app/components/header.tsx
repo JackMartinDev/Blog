@@ -3,17 +3,16 @@ import ThemeButton from "./theme-button";
 
 const Header = () => {
   return (
-    <nav className="h-14 border-b sticky top-0 bg-white dark:bg-black">
-      <div className="flex flex-row justify-between items-center mx-auto max-w-5xl h-full">
-        <h1 className="text-3xl font-semibold">Jack Martin</h1>
-        <div className="flex flex-row gap-2 items-center">
+    <nav className="h-14 border-b sticky top-0 bg-white dark:bg-slate-900">
+      <div className="flex flex-row justify-between items-center dark:text-slate-50 mx-auto max-w-5xl h-full">
+        <span className="text-3xl font-semibold after:content-['dev\00a0in\00a0🇯🇵'] after:ml-0.5 after:text-slate-400 after:dark:text-slate-400 after:text-base">
+          Jack Martin
+        </span>
+        <div className="flex flex-row gap-1 items-center">
           <SocialIcon href="https://github.com/JackMartinDev">
             {githubIcon}
           </SocialIcon>
           <ThemeButton />
-          <a href="#">Home</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
         </div>
       </div>
     </nav>

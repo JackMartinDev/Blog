@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 const ThemeButton = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [_, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     const prefersDarkMode = window.matchMedia(
