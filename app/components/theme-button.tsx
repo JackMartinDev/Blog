@@ -23,14 +23,9 @@ const ThemeButton = () => {
     <>
       <button
         onClick={toggleTheme}
-        className="rounded-full hover:bg-slate-100 p-2 transition-colors dark:text-white dark:hover:bg-slate-800 scale-0 dark:scale-100"
+        className="rounded-full hover:bg-slate-100 p-2 transition-colors dark:text-white dark:hover:bg-slate-800 inline-flex items-center justify-center whitespace-nowrap text-sm font-medium h-10 w-10"
       >
         {sunIcon}
-      </button>
-      <button
-        onClick={toggleTheme}
-        className="rounded-full hover:bg-slate-100 p-2 transition-colors dark:text-white dark:hover:bg-slate-800 scale-100 dark:scale-0"
-      >
         {moonIcon}
       </button>
     </>
@@ -42,10 +37,12 @@ export default ThemeButton;
 const sunIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    className="w-6 h-6 scale-0 dark:scale-100 absolute rotate-90 transition-all dark:rotate-0"
     fill="none"
     stroke="currentColor"
     strokeWidth="2"
-    className="w-6 h-6"
+    width="24"
+    height="24"
     viewBox="0 0 24 24"
   >
     <path
@@ -59,11 +56,12 @@ const sunIcon = (
 const moonIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    className="w-6 h-6 scale-100 dark:scale-0 absolute rotate-0 transition-all dark:-rotate-90"
+    fill="none"
+    stroke="currentColor"
     width="24"
     height="24"
     viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
