@@ -1,11 +1,22 @@
+"use client";
+import { Post } from "@prisma/client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-const BlogPost = () => {
+const BlogPost = ({
+  post: { image, title, slug, content, createdAt },
+}: {
+  post: Post;
+}) => {
+  const router = useRouter();
   return (
-    <div className="flex flex-col gap-2 font-light sm:flex-row cursor-pointer border-b last:border-0 p-4 dark:text-slate-50">
+    <div
+      className="flex flex-col gap-2 font-light sm:flex-row cursor-pointer border-b last:border-0 p-4 dark:text-slate-50"
+      onClick={() => router.push("/posts/" + slug)}
+    >
       <div className="flex shrink-0">
         <Image
-          src="/thumbnail.jpg"
+          src={image ?? "/thumbnail.jpg"}
           alt="Blog post"
           width={1300}
           height={866}
@@ -13,13 +24,10 @@ const BlogPost = () => {
         />
       </div>
       <div className="flex flex-col items-start gap-1">
-        <h3 className="text-xl font-semibold">Blog post title</h3>
-        <p className="">Published on 2021-01-01</p>
+        <h3 className="text-xl font-semibold">{title}</h3>
+        <p className="">{`Published on ${createdAt}`}</p>
         <p className="">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt
-          maiores placeat, deleniti sunt officia ipsum ab quas earum facilis
-          fugiat quod dolore rerum accusantium, sequi eius voluptates totam
-          accusamus ratione.
+          {content.length > 200 ? `${content.slice(0, 200)}...` : content}
         </p>
         <button className="text-sm underline underline-offset-2">
           Read More
