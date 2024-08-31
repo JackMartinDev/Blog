@@ -1,35 +1,48 @@
 "use client";
+import { useTheme } from "next-themes";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 const ThemeButton = () => {
-  const [_, setIsDarkMode] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { setTheme, resolvedTheme } = useTheme();
 
-  useEffect(() => {
-    const prefersDarkMode = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
-    setIsDarkMode(prefersDarkMode);
-    document.documentElement.classList.toggle("dark", prefersDarkMode);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
-  const toggleTheme = () => {
-    setIsDarkMode((prevMode) => {
-      const newMode = !prevMode;
-      document.documentElement.classList.toggle("dark", newMode);
-      return newMode;
-    });
-  };
-  return (
-    <>
+  if (!mounted)
+    return (
+      <Image
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAABCAQAAAAGVCQYAAAADElEQVR42mNkoDIAAACiAAIfFnU0AAAAAElFTkSuQmCC"
+        width={40}
+        height={40}
+        sizes="40x40"
+        alt="Loading Light/Dark Toggle"
+        priority={false}
+        title="Loading Light/Dark Toggle"
+      />
+    );
+
+  if (resolvedTheme === "dark") {
+    return (
       <button
-        onClick={toggleTheme}
+        onClick={() => setTheme("light")}
         className="rounded-full hover:bg-slate-100 p-2 transition-colors dark:text-white dark:hover:bg-slate-800 inline-flex items-center justify-center whitespace-nowrap text-sm font-medium h-10 w-10"
       >
         {sunIcon}
+      </button>
+    );
+  }
+
+  if (resolvedTheme === "light") {
+    return (
+      <button
+        onClick={() => setTheme("dark")}
+        className="rounded-full hover:bg-slate-100 p-2 transition-colors dark:text-white dark:hover:bg-slate-800 inline-flex items-center justify-center whitespace-nowrap text-sm font-medium h-10 w-10"
+      >
         {moonIcon}
       </button>
-    </>
-  );
+    );
+  }
 };
 
 export default ThemeButton;

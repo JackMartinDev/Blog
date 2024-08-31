@@ -3,6 +3,12 @@ import { Post } from "@prisma/client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
+const formatOptions: Intl.DateTimeFormatOptions = {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
+
 const BlogPost = ({
   post: { image, title, slug, content, createdAt },
 }: {
@@ -25,10 +31,8 @@ const BlogPost = ({
       </div>
       <div className="flex flex-col items-start gap-1">
         <h3 className="text-xl font-semibold">{title}</h3>
-        <p className="">{`Published on ${createdAt}`}</p>
-        <p className="">
-          {content.length > 200 ? `${content.slice(0, 200)}...` : content}
-        </p>
+        <p className="">{`Published on ${createdAt.toLocaleDateString("en-US", formatOptions)}`}</p>
+        <p className="line-clamp-5 md:line-clamp-4">{content}</p>
         <button className="text-sm underline underline-offset-2">
           Read More
         </button>
