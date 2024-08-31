@@ -9,6 +9,11 @@ const ThemeButton = () => {
 
   useEffect(() => setMounted(true), []);
 
+  const handleThemeChange = () => {
+    if (resolvedTheme === "dark") setTheme("light");
+    else setTheme("dark");
+  };
+
   if (!mounted)
     return (
       <Image
@@ -22,27 +27,15 @@ const ThemeButton = () => {
       />
     );
 
-  if (resolvedTheme === "dark") {
-    return (
-      <button
-        onClick={() => setTheme("light")}
-        className="rounded-full hover:bg-slate-100 p-2 transition-colors dark:text-white dark:hover:bg-slate-800 inline-flex items-center justify-center whitespace-nowrap text-sm font-medium h-10 w-10"
-      >
-        {sunIcon}
-      </button>
-    );
-  }
-
-  if (resolvedTheme === "light") {
-    return (
-      <button
-        onClick={() => setTheme("dark")}
-        className="rounded-full hover:bg-slate-100 p-2 transition-colors dark:text-white dark:hover:bg-slate-800 inline-flex items-center justify-center whitespace-nowrap text-sm font-medium h-10 w-10"
-      >
-        {moonIcon}
-      </button>
-    );
-  }
+  return (
+    <button
+      onClick={handleThemeChange}
+      className="rounded-full hover:bg-slate-100 p-2 transition-colors dark:text-white dark:hover:bg-slate-800 inline-flex items-center justify-center whitespace-nowrap text-sm font-medium h-10 w-10"
+    >
+      {sunIcon}
+      {moonIcon}
+    </button>
+  );
 };
 
 export default ThemeButton;
