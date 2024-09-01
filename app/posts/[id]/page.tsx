@@ -4,24 +4,24 @@ import Link from "next/link";
 import { getFormattedDate } from "@/app/lib/formatDate";
 import "highlight.js/styles/github-dark.css";
 
-export const revalidate = 0;
+export const revalidate = 43200;
 
 type Props = {
   params: {
     id: string;
   };
 };
-//
-// export async function getStaticParams() {
-//   const posts = await getPostsMeta();
-//
-//   if (!posts) return [];
-//
-//   return posts.map((post) => ({
-//     postId: post.id,
-//   }));
-// }
-//
+
+export async function generateStaticParams() {
+  const posts = await getPostsMeta();
+
+  if (!posts) return [];
+
+  return posts.map((post) => ({
+    postId: post.id,
+  }));
+}
+
 export async function generateMetadata({ params: { id } }: Props) {
   const post = await getPostByName(`${id}.mdx`);
 
