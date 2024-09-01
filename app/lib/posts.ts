@@ -18,12 +18,11 @@ export async function getPostByName(
   fileName: string,
 ): Promise<Post | undefined> {
   const res = await fetch(
-    `https://raw.githubusercontent.com/gitdagray/test-blogposts/main/${fileName}`,
+    `https://raw.githubusercontent.com/JackMartinDev/blog-posts/main/${fileName}`,
     {
       headers: {
         Accept: "application/vnd.github+json",
-        //Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
         "X-GitHub-Api-Version": "2022-11-28",
       },
     },
@@ -69,7 +68,6 @@ export async function getPostByName(
       id,
       title: frontmatter.title,
       date: frontmatter.date,
-      tags: frontmatter.tags,
     },
     content,
   };
@@ -79,10 +77,11 @@ export async function getPostByName(
 
 export async function getPostsMeta(): Promise<Meta[] | undefined> {
   const res = await fetch(
-    "https://api.github.com/repos/gitdagray/test-blogposts/git/trees/main?recursive=1",
+    "https://api.github.com/repos/JackMartinDev/blog-posts/git/trees/main?recursive=1",
     {
       headers: {
         Accept: "application/vnd.github+json",
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
         "X-GitHub-Api-Version": "2022-11-28",
       },
     },
