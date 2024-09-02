@@ -49,7 +49,7 @@ const PostPage = async ({ params: { id } }: Props) => {
       <div className="inline-block border-t py-2 dark:border-slate-600">
         <PublishTime date={meta.date} />
       </div>
-      <article className="prose prose-slate dark:prose-invert mb-4">
+      <article className="prose prose-slate dark:prose-invert max-w-none mb-4">
         {content}
       </article>
       <p className="mb-10">
