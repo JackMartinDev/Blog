@@ -7,7 +7,7 @@ import { Providers } from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Jack Martin",
   description: "Jack Martin personal blog",
 };
 

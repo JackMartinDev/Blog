@@ -37,7 +37,7 @@ export async function getPostByName(
   const { frontmatter, content } = await compileMDX<{
     title: string;
     date: string;
-    tags: string[];
+    summary: string;
   }>({
     source: rawMDX,
     components: {
@@ -68,13 +68,13 @@ export async function getPostByName(
       id,
       title: frontmatter.title,
       date: frontmatter.date,
+      summary: frontmatter.summary,
     },
     content,
   };
 
   return blogPostObj;
 }
-
 export async function getPostsMeta(): Promise<Meta[] | undefined> {
   const res = await fetch(
     "https://api.github.com/repos/JackMartinDev/blog-posts/git/trees/main?recursive=1",
