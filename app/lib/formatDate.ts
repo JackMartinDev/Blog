@@ -5,3 +5,7 @@ export function getFormattedDate(date: string) {
     day: "numeric",
   });
 }
+
+export function getDateTime(date: string) {
+  return new Date(date).toISOString().split("T")[0];
+}
