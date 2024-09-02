@@ -2,9 +2,11 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
 import rehypeSlug from "rehype-slug";
+import rehypePluginWrapCodeBlocks from "./rehype-plugin-wrap-code-blocks";
 import { Meta, Post } from "../types/post";
 import Video from "@/app/components/video-player";
 import CustomImage from "@/app/components/image";
+import CodeBlock from "@/app/components/code-block";
 
 type Filetree = {
   tree: [
@@ -43,6 +45,7 @@ export async function getPostByName(
     components: {
       Video,
       CustomImage,
+      CodeBlock,
     },
     options: {
       parseFrontmatter: true,
@@ -50,6 +53,7 @@ export async function getPostByName(
         rehypePlugins: [
           rehypeHighlight,
           rehypeSlug,
+          rehypePluginWrapCodeBlocks,
           [
             rehypeAutolinkHeadings,
             {
