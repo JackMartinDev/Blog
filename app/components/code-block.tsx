@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import CheckIcon from "@/app/components/icons/check-icon";
+import CopyIcon from "@/app/components/icons/copy-icon";
 
 type Props = {
   children: React.ReactNode;
@@ -35,10 +37,10 @@ const CodeBlock = ({ children, className }: Props) => {
   return (
     <div className="relative">
       <button
-        className="absolute top-6 right-7 bg-blue-500 hover:bg-blue-700 text-white text-sm py-1 px-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
+        className="absolute top-6 right-7 bg-blue-500 hover:bg-blue-700 text-white text-sm py-2 px-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
         onClick={handleCopy}
       >
-        {copied ? "Copied!" : "Copy"}
+        {copied ? <CheckIcon /> : <CopyIcon />}
       </button>
       <pre className={`overflow-x-auto ${className}`}>
         <code className={className}>{children}</code>
