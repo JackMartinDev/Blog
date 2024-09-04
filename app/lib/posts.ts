@@ -2,7 +2,7 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
 import rehypeSlug from "rehype-slug";
-import rehypePluginWrapCodeBlocks from "./rehype-plugin-wrap-code-blocks";
+import WrapCodeBlocks from "./wrap-code-blocks";
 import { Meta, Post } from "../types/post";
 import Video from "@/app/components/video-player";
 import CustomImage from "@/app/components/image";
@@ -53,7 +53,7 @@ export async function getPostByName(
         rehypePlugins: [
           rehypeHighlight,
           rehypeSlug,
-          rehypePluginWrapCodeBlocks,
+          WrapCodeBlocks,
           [
             rehypeAutolinkHeadings,
             {

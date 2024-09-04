@@ -1,6 +1,6 @@
 import { visit } from "unist-util-visit";
 
-export default function rehypePluginWrapCodeBlocks() {
+export default function WrapCodeBlocks() {
   return (tree) => {
     visit(tree, "element", (node, index, parent) => {
       if (node.tagName === "pre") {
