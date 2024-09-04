@@ -9,7 +9,7 @@ type Props = {
   className?: string;
 };
 
-const CodeBlock = ({ children, className }: Props) => {
+const CodeBlock = ({ children }: Props) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -37,14 +37,14 @@ const CodeBlock = ({ children, className }: Props) => {
   return (
     <div className="relative">
       <button
-        className="absolute top-6 right-7 bg-blue-500 hover:bg-blue-700 text-white text-sm py-2 px-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
+        className="absolute top-5 right-6 bg-slate-700 hover:bg-slate-600 text-white text-sm py-1.5 px-1.5 rounded focus:outline-none"
+        disabled={copied}
         onClick={handleCopy}
+        title={copied ? "Copied!" : "Copy to clipboard"}
       >
         {copied ? <CheckIcon /> : <CopyIcon />}
       </button>
-      <pre className={`overflow-x-auto ${className}`}>
-        <code className={className}>{children}</code>
-      </pre>
+      <pre className="overflow-x-auto">{children}</pre>
     </div>
   );
 };
