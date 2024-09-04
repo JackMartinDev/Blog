@@ -33,6 +33,7 @@ const ThemeButton = () => {
     <button
       onClick={handleThemeChange}
       className="rounded-full hover:bg-slate-100 p-2 transition-colors dark:text-white dark:hover:bg-slate-800 inline-flex items-center justify-center whitespace-nowrap text-sm font-medium h-10 w-10"
+      title="Toggle theme"
     >
       <SunIcon />
       <MoonIcon />

@@ -11,6 +11,7 @@ const SocialIcon = ({ href, children }: Props) => {
       href={href}
       target="_blank"
       className="rounded-full hover:bg-slate-100 p-2 transition-colors dark:text-white dark:hover:bg-slate-800"
+      title="GitHub"
     >
       {children}
     </a>
