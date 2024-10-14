@@ -14,7 +14,7 @@ const BlogPost = ({ post }: Props) => {
       <Link href={`/posts/${id}`} className="flex shrink-0">
         <div>
           <Image
-            src={"/thumbnail.jpg"}
+            src={"/coming.jpg"}
             alt="Blog post"
             width={1300}
             height={866}
